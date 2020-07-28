@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/data/category_data.dart';
 import 'package:meal_app/widgets/category_item.dart';
+import 'package:meal_app/model/meal.dart';
 
 class CategoriesScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return GridView(

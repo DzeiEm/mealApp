@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/data/meal_data.dart';
+import 'package:meal_app/model/meal.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal_detail';
+
+  final Function togglefavoritedMeals;
+  final Function isFavorite;
+
+  MealDetailScreen(this.togglefavoritedMeals, this.isFavorite);
 
   Widget builSectionTitle(BuildContext context, String text) {
     return Container(
@@ -81,12 +87,11 @@ class MealDetailScreen extends StatelessWidget {
           ],
         ),
       ),
-       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
+      floatingActionButton: FloatingActionButton(
+        //  norima matyti arba tuscia sirdute arba pilna priklausomai ar jau sitas buvo pavoriritintas.
+        child: Icon(isFavorite(mealId) ? Icons.star : Icons.star_border),
         elevation: 4,
-        onPressed: (){
-          Navigator.of(context).pop(mealId);
-        },
+        onPressed: () => togglefavoritedMeals(mealId),
       ),
     );
   }
